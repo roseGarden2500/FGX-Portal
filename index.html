@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature GateX - ローカルファースト・ユーティリティポータル</title>
+    <meta name="description" content="Feature GateXの公式総合ポータルサイト。外部クラウドに依存しないプライバシー重視のデスクトップユーティリティ（フリーウェア・シェアウェア）を多数公開中。">
+    <link rel="icon" type="image/png" href="Feature-GateX-Logo.png">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #38bdf8;
+            --primary-blue: #0284c7;
+            --primary-blue-hover: #0369a1;
+            --share-badge: #d97706;
+            --free-badge: #059669;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --bg-dark: #0b0f19;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* ヘッダー */
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        /* 追加：ロゴ画像のスタイル */
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            max-width: 1000px;
+            margin: 5rem auto 4rem;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.4);
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-blue-hover);
+            transform: translateY(-2px);
+        }
+
+        /* 由来・哲学セクション */
+        .about-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 3rem 1.5rem;
+            background-color: var(--secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .about-card h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* アプリカタログセクション */
+        .catalog-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .catalog-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .catalog-sub {
+            text-align: center;
+            color: var(--text-sub);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .app-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .app-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .badge.free {
+            background-color: rgba(5, 150, 105, 0.2);
+            color: #34d399;
+            border: 1px solid #059669;
+        }
+
+        .badge.share {
+            background-color: rgba(217, 119, 6, 0.2);
+            color: #fbbf24;
+            border: 1px solid #d97706;
+        }
+
+        .app-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .app-link {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .app-link:hover {
+            background-color: var(--accent);
+            color: var(--bg-dark);
+        }
+
+        /* 変更履歴（Changelog）セクション */
+        .changelog-section {
+            max-width: 1000px;
+            margin: 5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .changelog-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -2.35rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            border: 2px solid var(--bg-dark);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--text-sub);
+            border-top: 1px solid var(--border-color);
+            margin-top: 6rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+        <div class="logo-area">
+            <a href="#" class="logo">
+                <!-- 生成されたロゴ画像を追加 -->
+                <img src="Feature-GateX-Logo.png" alt="Feature GateX Logo" class="logo-img">
+                Feature GateX
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">由来と哲学</a></li>
+                <li><a href="#apps">アプリ一覧</a></li>
+                <li><a href="#changelog">変更履歴</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <h1>ローカルファーストの力で、<br>デジタル環境をより安全に。</h1>
+        <p>Feature GateXは、外部クラウドに依存しないプライバシー重視のデスクトップユーティリティを提供します。<br>プライベートからビジネスまで、日々の課題をスマートに解決するツール群。</p>
+        <a href="#apps" class="cta-btn">アプリ一覧を見る</a>
+    </section>
+
+    <!-- 由来と哲学セクション -->
+    <section id="about" class="about-section">
+        <h2>Feature GateX の由来と哲学</h2>
+        <p style="text-align: center; color: var(--text-sub); margin-bottom: 1.5rem;">私たちが目指す、ツール開発における3つのコアコンセプト</p>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Feature（機能・特長）</h3>
+                <p>最新の技術やユーザの困りごとに焦点を当て、ユーザーのかゆいところに手が届く、実用性と効率性に特化した多彩な機能群を追及します。</p>
+            </div>
+            <div class="about-card">
+                <h3>Gate（門・境界）</h3>
+                <p>未知なるものへ挑戦する入口として、そしてユーザのセキュリティやプライバシを守る境界として、先進的かつ安全なアプリケーションを提供します。</p>
+            </div>
+            <div class="about-card">
+                <h3>X（未知数・拡張性）</h3>
+                <p>固定概念にとらわれない新しいアイデアの具現化と、今後も無限に拡大していくアプリエコシステムへの挑戦を表しています。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- アプリケーション・カタログ -->
+    <section id="apps" class="catalog-section">
+        <h2>Application Catalog</h2>
+        <p class="catalog-sub">環境を汚さず、ZIP解凍ですぐに使えるポータブル仕様のツールラインナップ</p>
+
+        <!-- フリーウェア -->
+        <h3 class="category-title">🟢 Free Software（フリーウェア）</h3>
+        <div class="app-grid">
+            <div class="app-card">
+                <div>
+                    <div class="app-header">
+                        <div class="app-name">HDNS-FGX</div>
+                        <span class="badge free">Free</span>
+                    </div>
+                    <p class="app-desc">LAN内機器の自動スキャン、広告・マルウェアのローカルDNSブロック、カスタムブラックリスト、テキスト共有機能を備えたネットワーク管理ツール。</p>
+                </div>
+                <a href="https://rosegarden2500.github.io/HDNS-FGX_LP/" class="app-link" target="_blank" rel="noopener">公式ページを見る</a>
+            </div>
+
+            <div class="app-card">
+                <div>
+                    <div class="app-header">
+                        <div class="app-name">DORE-FGX</div>
+                        <span class="badge free">Free</span>
+                    </div>
+                    <p class="app-desc">文書の成り立ちをツリー構造で管理。元にしたデータや参考資料を紐づけ、丸ごと共有・引き継ぎができるドキュメント＆参考資料管理ユーティリティ。</p>
+                </div>
+                <a href="https://rosegarden2500.github.io/DORE-FGX_LP/" class="app-link" target="_blank" rel="noopener">公式ページを見る</a>
+            </div>
+
+            <div class="app-card">
+                <div>
+                    <div class="app-header">
+                        <div class="app-name">LETS-FGX</div>
+                        <span class="badge free">Free</span>
+                    </div>
+                    <p class="app-desc">事務系ユーザだけでなく、開発系ユーザも利用できるファイル検索・探索ユーティリティです。Office文書やPDF、画像に加えて、プログラムファイルまで高速に検索します。</p>
+                </div>
+                <a href="https://rosegarden2500.github.io/LETS-FGX_LP/" class="app-link" target="_blank" rel="noopener">公式ページを見る</a>
+            </div>
+
+            <div class="app-card">
+                <div>
+                    <div class="app-header">
+                        <div class="app-name">COCAT-FGX</div>
+                        <span class="badge free">Free</span>
+                    </div>
+                    <p class="app-desc">Office文書やWebサイトだけでなく、内蔵OCR機能により、PDFや画像ファイルからもデータ抽出ができます。シンプルかつ高機能なテキスト＆画像抽出ユーティリティです。</p>
+                </div>
+                <a href="https://rosegarden2500.github.io/COCAT-FGX_LP/" class="app-link" target="_blank" rel="noopener">公式ページを見る</a>
+            </div>
+
+            <div class="app-card">
+                <div>
+                    <div class="app-header">
+                        <div class="app-name">FUSIC-FGX</div>
+                        <span class="badge free">Free</span>
+                    </div>
+                    <p class="app-desc">お気に入りの画像をドラッグ＆ドロップして、それぞれの画像を拡大・縮小、フレーミングを決めるだけで、簡単に壁紙を作成できる、デスクトップユーティリティです。</p>
+                </div>
+                <a href="https://rosegarden2500.github.io/FUSIC-FXG_LP/" class="app-link" target="_blank" rel="noopener">公式ページを見る</a>
+            </div>
+        </div>
+
+        <!-- シェアウェア -->
+        <h3 class="category-title">🟠 Shareware（シェアウェア）</h3>
+        <div class="app-grid">
+            <div class="app-card">
+                <div>
+                    <div class="app-header">
+                        <div class="app-name">GAIS-FGX</div>
+                        <span class="badge share">Shareware</span>
+                    </div>
+                    <p class="app-desc">生成AI利用時に外部に流出したくないと想定される、重要な情報や個人情報などを自動的に抽出します。抽出したワードは独自アルゴリズムを用いてリスク別にユーザに提示します。ユーザは流出したくないワードを選ぶだけで、テキストが安全化（サニタイズ）され、そのテキストを生成AIに入力して使うことで、情報流出・漏洩を防げます。AIの出力をコピーして安全化を解除すれば完全なテキストに復元されます。</p>
+                </div>
+                <a href="https://rosegarden2500.github.io/GAIS-FGX_LP/" class="app-link" target="_blank" rel="noopener">公式ページを見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 変更履歴（Changelog）セクション -->
+    <section id="changelog" class="changelog-section">
+        <h2>Changelog & Updates</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2026年11月</div>
+                <div class="timeline-content">
+                    <h3>GAIS-FGX & HDNS-FGX / DORE-FGX LPアップデート</h3>
+                    <p>各アプリの操作画面キャプチャをLPに追加し、配置先パスの日本語注意書きやUIのブラッシュアップを実施。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2026年10月</div>
+                <div class="timeline-content">
+                    <h3>Feature GateX 総合ポータルサイト開設 & 初期アプリ群の公開</h3>
+                    <p>フリーウェア5作品およびシェアウェア1作品の正式リリースに伴い、ポータルサイトおよび各公式LPを展開開始。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2026 Feature GateX. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
