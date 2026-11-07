@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feature GateX - ローカルファースト・ユーティリティポータル</title>
     <meta name="description" content="Feature GateXの公式総合ポータルサイト。外部クラウドに依存しないプライバシー重視のデスクトップユーティリティ（フリーウェア・シェアウェア）を多数公開中。">
+    
+    <!-- ファビコン設定 -->
     <link rel="icon" type="image/png" href="Feature-GateX-Logo.png">
+
     <style>
         :root {
             --primary: #0f172a;
@@ -63,7 +66,6 @@
             text-decoration: none;
         }
 
-        /* 追加：ロゴ画像のスタイル */
         .logo-img {
             width: 40px;
             height: 40px;
@@ -355,6 +357,47 @@
             font-size: 0.95rem;
         }
 
+        /* 連絡先（Contact）セクション */
+        .contact-section {
+            max-width: 800px;
+            margin: 5rem auto;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .contact-link {
+            color: var(--accent);
+            font-size: 1.15rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: opacity 0.2s;
+        }
+
+        .contact-link:hover {
+            opacity: 0.8;
+        }
+
         /* フッター */
         footer {
             text-align: center;
@@ -377,7 +420,6 @@
     <header>
         <div class="logo-area">
             <a href="#" class="logo">
-                <!-- 生成されたロゴ画像を追加 -->
                 <img src="Feature-GateX-Logo.png" alt="Feature GateX Logo" class="logo-img">
                 Feature GateX
             </a>
@@ -387,6 +429,7 @@
                 <li><a href="#about">由来と哲学</a></li>
                 <li><a href="#apps">アプリ一覧</a></li>
                 <li><a href="#changelog">変更履歴</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
             </ul>
         </nav>
     </header>
@@ -516,6 +559,20 @@
                     <p>フリーウェア5作品およびシェアウェア1作品の正式リリースに伴い、ポータルサイトおよび各公式LPを展開開始。</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- 連絡先（Contact）セクション -->
+    <section id="contact" class="contact-section">
+        <h2>Contact</h2>
+        <p style="color: var(--text-sub); margin-bottom: 1rem; font-size: 0.95rem;">
+            アプリに関するご質問、不具合のご報告、その他お問い合わせは、以下のメールアドレスまでお願いいたします。
+        </p>
+        <div class="contact-card">
+            <a href="mailto:featuregatex@gmail.com" class="contact-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                featuregatex@gmail.com
+            </a>
         </div>
     </section>
 
