@@ -359,10 +359,18 @@
 
         /* 連絡先（Contact）セクション */
         .contact-section {
-            max-width: 800px;
+            max-width: 1000px; /* 800pxから1000pxに拡大 */
             margin: 5rem auto;
             padding: 0 1.5rem;
             text-align: center;
+        }
+
+        .contact-section p {
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            word-break: keep-all; /* 単語の途中で改行させない */
+            overflow-wrap: break-word;
         }
 
         .contact-section h2 {
@@ -565,19 +573,19 @@
     <!-- 連絡先（Contact）セクション -->
     <section id="contact" class="contact-section">
         <h2>Contact</h2>
-        <p style="color: var(--text-sub); margin-bottom: 1rem; font-size: 0.95rem;">
+        <p style="color: var(--text-sub); margin-bottom: 1.5rem; font-size: 0.95rem; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.7;">
             アプリに関するご質問、不具合のご報告、その他お問い合わせは、以下のメールアドレスまでお願いいたします。
         </p>
         <div class="contact-card">
-    <a href="mailto:featuregatex@gmail.com" class="contact-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        featuregatex@gmail.com
-    </a>
-    <!-- クリックでコピーするボタン -->
-    <button onclick="navigator.clipboard.writeText('featuregatex@gmail.com'); alert('メールアドレスをコピーしました！');" style="margin-top: 0.8rem; background: var(--secondary); color: var(--accent); border: 1px solid var(--border-color); padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">
-        アドレスをコピー
-    </button>
-</div>
+            <a href="mailto:featuregatex@gmail.com" class="contact-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                featuregatex@gmail.com
+            </a>
+            <!-- クリックでコピーするボタン -->
+            <button onclick="navigator.clipboard.writeText('featuregatex@gmail.com'); alert('メールアドレスをコピーしました！');" style="margin-top: 0.8rem; background: var(--secondary); color: var(--accent); border: 1px solid var(--border-color); padding: 0.4rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">
+                アドレスをコピー
+            </button>
+        </div>
     </section>
 
     <!-- フッター -->
